@@ -2,8 +2,8 @@ var server = require("./server");
 var clients = require("./clients");
 var rooms = require("./rooms");
 
-server.getHttp().listen(4000, () => {
-  console.log("listening on *:4000");
+server.getHttp().listen(80, () => {
+  console.log("listening on *:80");
 });
 
 server.getApp().get("/", (req, res) => {
