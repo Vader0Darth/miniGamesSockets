@@ -2,7 +2,12 @@ var app = require("express")();
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 var clients = require("./clients");
+var db = require('./db/db');
 
 exports.getIO = () => {
   return io;
