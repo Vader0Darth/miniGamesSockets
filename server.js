@@ -1,4 +1,8 @@
 var app = require("express")();
+var cors = require("cors");
+
+app.use(cors());
+
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 
@@ -7,7 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var clients = require("./clients");
-var db = require('./db/db');
+
+require("./db/db");
 
 exports.getIO = () => {
   return io;

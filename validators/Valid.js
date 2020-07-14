@@ -28,7 +28,12 @@ exports.validData = (fields, reqBody) => {
 const makeString = (errors) => {
   let error_string = "";
   errors.forEach((error, id) => {
-    if (id === 0)
+    if (id === 0 && errors.length < 2)
+      error_string +=
+        error.type === "empty"
+          ? `Fill the filed - "${error.error}"`
+          : `Cannot found the filed - "${error.error}"`;
+    else if (id === 0)
       error_string +=
         error.type === "empty"
           ? `Fill the filed - "${error.error}",`
